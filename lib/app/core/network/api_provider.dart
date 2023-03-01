@@ -563,7 +563,7 @@ class ApiProvider {
       onError(
          'Status code: ${response.statusCode} - ${StatusCodeEnum.from(
           code: response.statusCode!,
-        ).message.tr}',
+        ).message}',
       );
     }
   }
