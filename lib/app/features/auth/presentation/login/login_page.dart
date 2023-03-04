@@ -17,6 +17,9 @@ class LoginPage extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           InkWell(
             onTap: () async {
@@ -28,7 +31,7 @@ class LoginPage extends GetView<LoginController> {
 
               final result = await useCase.call(
                 Params(
-                  phoneNumber: "999",
+                  phoneNumber: "9sadasdasd99",
                   password: "Aa@121212",
                 ),
               );
@@ -48,6 +51,9 @@ class LoginPage extends GetView<LoginController> {
             },
             child: Text(
               'Login',
+              style: TextStyle(
+                fontSize: 30,
+              ),
             ),
           ),
         ],

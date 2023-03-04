@@ -15,10 +15,10 @@ class ApiProvider {
       },
       baseUrl: AppUrls.baseUrl,
       receiveTimeout: const Duration(
-        seconds: 1,
+        seconds: 60,
       ),
       connectTimeout: const Duration(
-        seconds: 1,
+        seconds: 60,
       ),
     ),
   );
@@ -549,12 +549,13 @@ class ApiProvider {
   ) {
     // Send substring of exception message
     // TODO: Make UI for showing messages scrollable
+    final exceptionMessage = exception.toString();
     onError(
       // exception.toString(),
-      exception.toString().substring(
-            0,
-            AppConstants.maxExceptionMessageLength,
-          ),
+      exceptionMessage.substring(
+        0,
+        exceptionMessage.length > AppConstants.maxExceptionMessageLength ? AppConstants.maxExceptionMessageLength : exceptionMessage.length,
+      ),
     );
 
     // Log complete exception message
