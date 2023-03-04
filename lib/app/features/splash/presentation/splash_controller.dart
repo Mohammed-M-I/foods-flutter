@@ -1,3 +1,4 @@
+import 'package:foods/app/core/values/constants/app_constants.dart';
 import 'package:foods/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +9,7 @@ class SplashController extends GetxController {
 
     Future.delayed(
       const Duration(
-        seconds: 3,
+        seconds: AppConstants.splashDelay,
       ),
       () {
         Get.offNamed(

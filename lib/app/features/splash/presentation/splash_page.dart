@@ -13,8 +13,6 @@ class SplashPage extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
-   controller.onInit();
-
     return Scaffold(
       body: Column(
         children: [
