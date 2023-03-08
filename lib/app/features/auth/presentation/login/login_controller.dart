@@ -12,7 +12,7 @@ import 'ui/login_ui_state.dart';
 class LoginController extends GetxController {
   //region State
 
-  final state = LoginUiState().obs;
+  final state = LoginUiState.defaultObj().obs;
 
   //endregion State
 

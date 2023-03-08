@@ -1,27 +1,37 @@
 import 'package:flutter/widgets.dart';
 
 class RegisterUiState {
-  var nickNameController = TextEditingController();
-  var phoneNumberController = TextEditingController();
-  var passwordController = TextEditingController();
+  final TextEditingController nickNameController;
+  final TextEditingController phoneNumberController;
+  final TextEditingController passwordController;
 
-  late bool isLoading;
+  final bool isLoading;
 
   RegisterUiState({
-    this.isLoading = false,
+    required this.nickNameController,
+    required this.phoneNumberController,
+    required this.passwordController,
+    required this.isLoading,
   });
 
-  RegisterUiState copyWith({
-    bool? isLoading,
-  }) {
-    final newState = RegisterUiState(
-      isLoading: isLoading ?? this.isLoading,
-    );
- 
-    newState.nickNameController = nickNameController;
-    newState.phoneNumberController = phoneNumberController;
-    newState.passwordController = passwordController;
+  RegisterUiState.defaultObj()
+      : this(
+          nickNameController: TextEditingController(),
+          phoneNumberController: TextEditingController(),
+          passwordController: TextEditingController(),
+          isLoading: false,
+        );
 
-    return newState;
-  }
+  RegisterUiState copyWith({
+    TextEditingController? nickNameController,
+    TextEditingController? phoneNumberController,
+    TextEditingController? passwordController,
+    bool? isLoading,
+  }) =>
+      RegisterUiState(
+        nickNameController: nickNameController ?? this.nickNameController,
+        phoneNumberController: phoneNumberController ?? this.phoneNumberController,
+        passwordController: passwordController ?? this.passwordController,
+        isLoading: isLoading ?? this.isLoading,
+      );
 }

@@ -1,25 +1,32 @@
 import 'package:flutter/widgets.dart';
 
 class LoginUiState {
-  var phoneNumberController = TextEditingController();
-  var passwordController = TextEditingController();
+  final TextEditingController phoneNumberController;
+  final TextEditingController passwordController;
 
-  late bool isLoading;
+  final bool isLoading;
 
   LoginUiState({
-    this.isLoading = false,
+    required this.phoneNumberController,
+    required this.passwordController,
+    required this.isLoading,
   });
 
+  LoginUiState.defaultObj()
+      : this(
+          phoneNumberController: TextEditingController(),
+          passwordController: TextEditingController(),
+          isLoading: false,
+        );
+
   LoginUiState copyWith({
+    TextEditingController? phoneNumberController,
+    TextEditingController? passwordController,
     bool? isLoading,
-  }) {
-    final newState = LoginUiState(
-      isLoading: isLoading ?? this.isLoading,
-    );
-
-    newState.phoneNumberController = phoneNumberController;
-    newState.passwordController = passwordController;
-
-    return newState;
-  }
+  }) =>
+      LoginUiState(
+        phoneNumberController: phoneNumberController ?? this.phoneNumberController,
+        passwordController: passwordController ?? this.passwordController,
+        isLoading: isLoading ?? this.isLoading,
+      );
 }
