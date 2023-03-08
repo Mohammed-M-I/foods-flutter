@@ -10,7 +10,7 @@ import 'ui/regsiter_ui_state.dart';
 class RegisterController extends GetxController {
   //region State
 
-  final state = RegisterUiState().obs;
+  final state = RegisterUiState.defaultObj().obs;
 
   //endregion State
 
