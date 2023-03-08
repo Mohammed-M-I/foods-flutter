@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:foods/app/core/error/export_error.dart';
 
-import '../entities/login_info.dart';
+import '../entities/login_data.dart';
 
 abstract class AuthRepository {
-  Future<Either<Failure, LoginInfo>> login({
+  Future<Either<Failure, LoginData>> login({
     required String phoneNumber,
     required String password,
   });

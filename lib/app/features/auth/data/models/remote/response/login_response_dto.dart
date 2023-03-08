@@ -1,6 +1,6 @@
-import '../../../../domain/entities/login_info.dart';
+import '../../../../domain/entities/login_data.dart';
 
-class LoginResponseDto extends LoginInfo {
+class LoginResponseDto extends LoginData {
   LoginResponseDto({
     required super.id,
     required super.nickName,

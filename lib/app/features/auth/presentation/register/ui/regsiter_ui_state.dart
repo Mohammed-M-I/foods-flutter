@@ -1,22 +1,24 @@
 import 'package:flutter/widgets.dart';
 
-class LoginUiState {
+class RegisterUiState {
+  var nickNameController = TextEditingController();
   var phoneNumberController = TextEditingController();
   var passwordController = TextEditingController();
 
   late bool isLoading;
 
-  LoginUiState({
+  RegisterUiState({
     this.isLoading = false,
   });
 
-  LoginUiState copyWith({
+  RegisterUiState copyWith({
     bool? isLoading,
   }) {
-    final newState = LoginUiState(
+    final newState = RegisterUiState(
       isLoading: isLoading ?? this.isLoading,
     );
-
+ 
+    newState.nickNameController = nickNameController;
     newState.phoneNumberController = phoneNumberController;
     newState.passwordController = passwordController;
 

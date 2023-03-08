@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foods/app/features/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:foods/app/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/error/failures.dart';
-import '../../data/repositories/auth_repository_impl.dart';
-import '../../domain/entities/login_info.dart';
+import '../../../../core/values/export/export_values.dart';
 import 'login_controller.dart';
+import 'ui/login_ui_event.dart';
+import 'widgets/views/login_fields_view.dart';
+import 'widgets/views/login_header_view.dart';
+import 'widgets/views/login_submit_view.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({
@@ -16,47 +16,49 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          InkWell(
-            onTap: () async {
-              final useCase = LoginUseCase(
-                repository: AuthRepositoryImpl(
-                  remoteDatasource: AuthRemoteDatasourceImpl(),
-                ),
-              );
+      body: Padding(
+        padding: const EdgeInsets.all(
+          AppDimensions.paddingOrMargin16,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Header
+            const LoginHeaderView(),
 
-              final result = await useCase.call(
-                Params(
-                  phoneNumber: "9sadasdasd99",
-                  password: "Aa@121212",
-                ),
-              );
+            // Fields
+            const LoginFieldsView(),
 
-              result.fold(
-                (Failure failure) {
-                  print(
-                    failure.message,
-                  );
-                },
-                (LoginInfo loginInfo) {
-                  print(
-                    loginInfo.token,
-                  );
-                },
-              );
-            },
-            child: Text(
-              'Login',
-              style: TextStyle(
-                fontSize: 30,
+            // Space
+            const SizedBox(
+              height: AppDimensions.paddingOrMargin16,
+            ),
+
+            // Submit
+            const LoginSubmitView(),
+
+            // Space
+            const SizedBox(
+              height: AppDimensions.paddingOrMargin40,
+            ),
+
+            // To register
+            InkWell(
+              onTap: () {
+                controller.on(
+                  event: LoginUiEvent.toRegister(),
+                );
+              },
+              child: Text(
+                AppStrings.iDoNotHaveAnAccount.tr,
+                style: const TextStyle(
+                  color: AppColors.black01,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

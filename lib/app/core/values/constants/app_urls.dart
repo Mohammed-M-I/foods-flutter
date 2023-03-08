@@ -4,7 +4,7 @@ abstract class AppUrls {
   //region Accounts
 
   static String login() => '/api/MobAccounts/Login';
-    static String register() => '/api/MobAccounts/Register';
+  static String register() => '/api/MobAccounts/Register';
 
   //endregion Accounts
 }

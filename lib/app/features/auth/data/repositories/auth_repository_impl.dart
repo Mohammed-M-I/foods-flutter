@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:foods/app/core/error/export_error.dart';
 import 'package:foods/app/core/error/failures.dart';
-import 'package:foods/app/features/auth/domain/entities/login_info.dart';
+import 'package:foods/app/features/auth/domain/entities/login_data.dart';
 
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_remote_datasource.dart';
@@ -16,7 +16,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }) : _remoteDatasource = remoteDatasource;
 
   @override
-  Future<Either<Failure, LoginInfo>> login({
+  Future<Either<Failure, LoginData>> login({
     required String phoneNumber,
     required String password,
   }) async {

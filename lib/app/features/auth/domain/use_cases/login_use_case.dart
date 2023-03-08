@@ -2,10 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:foods/app/core/error/export_error.dart';
 import 'package:foods/app/core/use_case/use_case.dart';
 
-import '../entities/login_info.dart';
+import '../entities/login_data.dart';
 import '../repositories/auth_repository.dart';
 
-class LoginUseCase extends UseCase<LoginInfo, Params> {
+class LoginUseCase extends UseCase<LoginData, Params> {
   final AuthRepository _repository;
 
   LoginUseCase({
@@ -13,7 +13,7 @@ class LoginUseCase extends UseCase<LoginInfo, Params> {
   }) : _repository = repository;
 
   @override
-  Future<Either<Failure, LoginInfo>> call(Params params) {
+  Future<Either<Failure, LoginData>> call(Params params) {
     return _repository.login(
       phoneNumber: params.phoneNumber,
       password: params.password,
@@ -29,9 +29,4 @@ class Params {
     required this.phoneNumber,
     required this.password,
   });
-
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'phoneNumber': phoneNumber,
-        'password': password,
-      };
 }
