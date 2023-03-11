@@ -12,7 +12,7 @@ class ServerException implements Exception {
   @override
   String toString() {
     Object? message = this.message;
-    if (message == null) return AppStrings.serverException;
+    if (message == null) return AppStrings.serverException.tr;
     return message.toString();
   }
 }
@@ -27,7 +27,7 @@ class LocalException implements Exception {
   @override
   String toString() {
     Object? message = this.message;
-    if (message == null) return AppStrings.localException;
+    if (message == null) return AppStrings.localException.tr;
     return message.toString();
   }
 }

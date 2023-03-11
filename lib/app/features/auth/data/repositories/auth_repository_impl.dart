@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:foods/app/core/error/export_error.dart';
 import 'package:foods/app/core/error/failures.dart';
+import 'package:foods/app/core/utils/app_network_utils.dart';
 import 'package:foods/app/features/auth/domain/entities/login_data.dart';
 
 import '../../domain/repositories/auth_repository.dart';
@@ -21,15 +22,21 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      final result = await _remoteDatasource.login(
-        data: LoginRequestDto(
-          phoneNumber: phoneNumber,
-          password: password,
-        ),
-      );
+      if (await AppNetworkUtilsImpl.instance.isConnected) {
+        final result = await _remoteDatasource.login(
+          data: LoginRequestDto(
+            phoneNumber: phoneNumber,
+            password: password,
+          ),
+        );
 
-      return Right(
-        result!,
+        return Right(
+          result!,
+        );
+      }
+
+      return Left(
+        NoInternetConnectionFailure(),
       );
     } on ServerException catch (exception) {
       return Left(
@@ -53,16 +60,22 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      await _remoteDatasource.register(
-        data: RegisterRequestDto(
-          nickName: nickName,
-          phoneNumber: phoneNumber,
-          password: password,
-        ),
-      );
+      if (await AppNetworkUtilsImpl.instance.isConnected) {
+        await _remoteDatasource.register(
+          data: RegisterRequestDto(
+            nickName: nickName,
+            phoneNumber: phoneNumber,
+            password: password,
+          ),
+        );
 
-      return const Right(
-        null,
+        return const Right(
+          null,
+        );
+      }
+
+      return Left(
+        NoInternetConnectionFailure(),
       );
     } on ServerException catch (exception) {
       return Left(
