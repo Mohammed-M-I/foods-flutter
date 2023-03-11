@@ -1,4 +1,5 @@
 import 'package:foods/app/core/error/export_error.dart';
+import 'package:foods/app/core/storage/app_storage.dart';
 import 'package:foods/app/core/utils/app_alert_utils.dart';
 import 'package:foods/app/core/values/export/export_values.dart';
 import 'package:foods/app/routes/app_pages.dart';
@@ -134,17 +135,27 @@ class LoginController extends GetxController {
           ),
         );
       },
-      (LoginData data) {
-        AppAlertUtils.showSnackBar(
-          title: AppStrings.alertSuccess.tr,
-          message: AppStrings.alertSuccess.tr,
-          backgroundColor: AppColors.green,
-        );
+      (LoginData data) async {
+        // AppAlertUtils.showSnackBar(
+        //   title: AppStrings.alertSuccess.tr,
+        //   message: AppStrings.alertSuccess.tr,
+        //   backgroundColor: AppColors.green,
+        // );
 
         state(
           state().copyWith(
             isLoading: false,
           ),
+        );
+
+        // Store user (LoginData)
+        await AppStorage.write(
+          AppStorage.isLoggedIn,
+          true,
+        );
+
+        Get.offNamed(
+          AppRoutes.main,
         );
       },
     );

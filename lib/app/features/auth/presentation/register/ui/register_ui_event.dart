@@ -17,3 +17,14 @@ class RegisterEvent implements RegisterUiEvent {
     required this.password,
   });
 }
+
+class LoginEvent implements RegisterUiEvent {
+  final String phoneNumber;
+  final String password;
+
+  LoginEvent({
+    required this.phoneNumber,
+    required this.password,
+  });
+}
+
