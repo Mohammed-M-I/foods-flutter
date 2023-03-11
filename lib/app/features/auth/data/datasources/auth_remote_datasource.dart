@@ -8,12 +8,12 @@ import '../models/remote/request/login_request_dto.dart';
 import '../models/remote/request/register_request_dto.dart';
 
 abstract class AuthRemoteDatasource {
-  Future<void> register({
-    required RegisterRequestDto data,
-  });
-
   Future<LoginResponseDto?> login({
     required LoginRequestDto data,
+  });
+
+  Future<void> register({
+    required RegisterRequestDto data,
   });
 }
 

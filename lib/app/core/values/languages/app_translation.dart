@@ -21,29 +21,32 @@ class AppTranslation extends Translations {
 
   @override
   Map<String, Map<String, String>> get keys => {
-        arabicLocale: arSA,
-        englishLocale: enUS,
-      };
+    arabicLocale: arSA,
+    englishLocale: enUS,
+  };
 
   static Locale getAppLocale() {
-    final String lang = AppStorage.read(
+    final String locale = AppStorage.read(
       AppStorage.locale,
       englishLocale,
     );
 
-    return getLocale(lang);
+    return _getLocale(
+      locale,
+    );
   }
 
-  static Future changeLocale(
-    String locale,
-  ) async {
+  static Future<void> changeLocale(
+      String locale,
+      ) async {
     await AppStorage.write(
       AppStorage.locale,
       locale,
     );
 
-    // For Settings Switch
-    if (locale.split('_').first == arabicLang) {
+    // For Settings switch
+    final lang = locale.split('_').first;
+    if (lang == arabicLang) {
       await AppStorage.write(
         AppStorage.isRTL,
         true,
@@ -55,15 +58,15 @@ class AppTranslation extends Translations {
       );
     }
 
-    Get.updateLocale(
-      getLocale(
+    return Get.updateLocale(
+      _getLocale(
         locale,
       ),
     );
   }
 
   // Utils
-  static Locale getLocale(String locale) {
+  static Locale _getLocale(String locale) {
     return Locale.fromSubtags(
       scriptCode: '_',
       languageCode: locale.split('_').first,
