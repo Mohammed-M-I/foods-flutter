@@ -47,5 +47,13 @@ abstract class AppStrings {
 
 //endregion Auth
 
+  //region Main
+
+  static const String home = 'home';
+  static const String orders = 'orders';
+  static const String profile = 'profile';
+
+//endregion Auth
+
 
 }

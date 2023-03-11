@@ -23,6 +23,8 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.5
 
+  material_design_icons_flutter: ^6.0.7096
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

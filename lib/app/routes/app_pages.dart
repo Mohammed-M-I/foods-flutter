@@ -1,3 +1,7 @@
+import 'package:foods/app/features/home/presentation/home_binding.dart';
+import 'package:foods/app/features/orders/presentation/orders_binding.dart';
+import 'package:foods/app/features/profile/presentation/profile_binding.dart';
+
 import '../features/auth/presentation/login/login_binding.dart';
 import '../features/auth/presentation/login/login_page.dart';
 import '../features/main/presentation/main_binding.dart';
@@ -39,7 +43,12 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.main,
       page: () => const MainPage(),
-      binding: MainBinding(),
+      bindings: [
+        MainBinding(),
+        HomeBinding(),
+        OrdersBinding(),
+        ProfileBinding(),
+      ],
       transition: Transition.fadeIn,
     ),
   ];

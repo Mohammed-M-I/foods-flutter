@@ -46,5 +46,13 @@ final Map<String, String> enUS = {
   AppStrings.passwordRequired: 'Password is required',
   AppStrings.iDoNotHaveAnAccount: 'I don\'t have an account. Register?',
 
-  //endregion Error
+  //endregion Auth
+
+  //region Main
+
+  AppStrings.home: 'Home',
+  AppStrings.orders: 'Orders',
+  AppStrings.profile: 'Profile',
+
+  //endregion Main
 };
