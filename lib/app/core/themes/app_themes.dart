@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../storage/app_storage.dart';
 
-abstract class AppTheme {
+abstract class AppThemes {
   //region Languages Keys
 
   static const String theme01 = "theme01";

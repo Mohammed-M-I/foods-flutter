@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'app/core/themes/app_theme.dart';
-import 'app/core/values/languages/app_translation.dart';
+import 'app/core/themes/app_themes.dart';
+import 'app/core/values/languages/app_translations.dart';
 import 'app/routes/app_pages.dart';
 
 class App extends StatelessWidget {
@@ -22,13 +22,13 @@ class App extends StatelessWidget {
       initialRoute: AppRoutes.splash,
 
       // Theme
-      theme: AppTheme.getAppTheme(),
-      darkTheme: AppTheme.getAppDarkTheme(),
-      themeMode: AppTheme.getAppThemeMode(),
+      theme: AppThemes.getAppTheme(),
+      darkTheme: AppThemes.getAppDarkTheme(),
+      themeMode: AppThemes.getAppThemeMode(),
 
       // Locale
-      locale: AppTranslation.getAppLocale(),
-      translations: AppTranslation(),
+      locale: AppTranslations.getAppLocale(),
+      translations: AppTranslations(),
     );
   }
 }

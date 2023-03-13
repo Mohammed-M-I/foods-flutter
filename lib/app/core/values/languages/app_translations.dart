@@ -6,7 +6,7 @@ import '../../storage/app_storage.dart';
 import 'from/ar_sa_translations.dart';
 import 'from/en_us_translations.dart';
 
-class AppTranslation extends Translations {
+class AppTranslations extends Translations {
   //region Languages Keys
 
   static const String arabicLang = 'ar';

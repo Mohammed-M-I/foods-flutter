@@ -1,3 +1,4 @@
+import 'package:foods/app/features/main/presentation/ui/main_ui_event.dart';
 import 'package:foods/app/features/main/presentation/ui/main_ui_state.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,6 @@ class MainController extends GetxController {
   //endregion State
 
   //region Use Cases
-
 
   //endregion Use Cases
 
@@ -53,9 +53,9 @@ class MainController extends GetxController {
 
   //region Public functions
 
-  void on() {
-
-  }
+  void on({
+    required MainUiEvent event,
+  }) {}
 
   //endregion Public functions
 

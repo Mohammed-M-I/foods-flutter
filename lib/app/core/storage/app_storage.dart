@@ -6,7 +6,7 @@ abstract class AppStorage {
   //region Keys
 
   static const String isLoggedIn = 'isLoggedIn';
-  static const String username = 'username';
+  static const String loginData = 'loginData';
   static const String isDarkMode = 'isDarkMode';
   static const String theme = 'theme';
   static const String isRTL = 'isRTL';
@@ -18,11 +18,11 @@ abstract class AppStorage {
 
   static T read<T>(String key, T defaultValue) => _getStorage.read<T>(key) ?? defaultValue;
 
-  static Future write(String key, dynamic value) => _getStorage.write(key, value);
+  static Future<void> write(String key, dynamic value) => _getStorage.write(key, value);
 
-  static Future remove(String key) => _getStorage.remove(key);
+  static Future<void> remove(String key) => _getStorage.remove(key);
 
-  static Future removeAll() => _getStorage.erase();
+  static Future<void> removeAll() => _getStorage.erase();
 
   //endregion
 }

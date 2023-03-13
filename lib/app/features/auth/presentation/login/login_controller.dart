@@ -2,6 +2,7 @@ import 'package:foods/app/core/error/export_error.dart';
 import 'package:foods/app/core/storage/app_storage.dart';
 import 'package:foods/app/core/utils/app_alert_utils.dart';
 import 'package:foods/app/core/values/export/export_values.dart';
+import 'package:foods/app/features/auth/core/utils/auth_user_utils.dart';
 import 'package:foods/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -148,10 +149,14 @@ class LoginController extends GetxController {
           ),
         );
 
-        // Store user (LoginData)
+        // TODO: Store user (LoginData)
         await AppStorage.write(
           AppStorage.isLoggedIn,
           true,
+        );
+
+        await AuthUserUtils.saveLoginData(
+          loginData: data,
         );
 
         Get.offNamed(

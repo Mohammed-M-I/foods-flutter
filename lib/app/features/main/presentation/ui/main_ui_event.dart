@@ -1,1 +1,4 @@
-abstract class MainUiEvent {}
+abstract class MainUiEvent {
+
+}
+
